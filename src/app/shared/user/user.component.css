@@ -1,0 +1,23 @@
+.user-div {
+    border: 2px solid green;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.user-div-else {
+    border: 2px solid red;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-div {
+    width: fit-content;
+    margin-left: auto;
+}
+
+.user-name {
+    font-size: 25px;
+    font-weight: 400;
+}

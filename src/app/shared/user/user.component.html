@@ -1,0 +1,21 @@
+<div class="user-div" *ngIf="route === 'activate' && !user.isDeleted ;">
+    <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
+    <div class="btn-div"><button class="btn btn-danger" (click)="deactiveUserClicked(user);">Deactive</button></div>
+</div>
+
+<div class="user-div-else" *ngIf="route === 'deleted' && user.isDeleted ;">
+    <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
+    <div class="btn-div"><button class="btn btn-success" (click)="activeUserClicked(user);">Active</button></div>
+</div>
+
+<div class="user-div" *ngIf="route === 'manage' && !user.isDeleted ">
+    <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
+    <div class="btn-div"><button class="btn btn-primary" (click)="handleDetails(user);">details</button></div>
+</div>
+
+<div class="user-div-else" *ngIf="route === 'manage' && user.isDeleted ">
+    <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
+    <div class="btn-div"><button class="btn btn-primary" (click)="handleDetails(user);">details</button></div>
+</div>
+
+<!-- *ngIf="user.isDeleted" -->
