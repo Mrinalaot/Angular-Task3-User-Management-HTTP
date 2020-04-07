@@ -20,12 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     HomeComponent,
-    //  UserComponent,
-    // UserlistComponent,
     ActivateUserComponent,
     DeletedUserComponent,
-     //ManageUserComponent,
-    // UserDetailsComponent
   ],
   imports: [
     BrowserModule,

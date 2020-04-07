@@ -12,7 +12,7 @@
         <div class="form-group">
             Password <input type="text" formControlName="password" class="form-control" />
             <div class="alert alert-danger" *ngIf="createForm.get('password').invalid && createForm.get('password').touched">
-                Password should be min 4 char
+                Password should be min 4 char and must have digit and alphabet
             </div>
         </div>
         <div class="form-group">

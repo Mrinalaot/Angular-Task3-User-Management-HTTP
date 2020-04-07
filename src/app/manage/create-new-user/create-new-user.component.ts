@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/user.service';
+import { AppSettings } from '../../../../constants';
 
 @Component({
   selector: 'app-create-new-user',
@@ -12,7 +13,9 @@ export class CreateNewUserComponent implements OnInit {
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl(''),
     login: new FormControl('',[Validators.required]),
-    password: new FormControl('',[Validators.minLength(4), Validators.required]) ,
+    password: new FormControl('',[Validators.minLength(4),
+       Validators.required,
+       Validators.pattern(AppSettings.PASS_PATTERN)]) ,
     age: new FormControl(''),
   });
   constructor(private userService : UserService) { }
@@ -24,14 +27,7 @@ export class CreateNewUserComponent implements OnInit {
       this.createForm.value
     ).subscribe(
       (result) => {
-        console.log('Result: Create User API - ', result);
         this.createForm.reset();
-      },
-      (error) => {
-        console.log('Error: Create User API - ', error);
-      },
-      () => {
-        console.log('Complete: Create User API');
       }
     );
   }

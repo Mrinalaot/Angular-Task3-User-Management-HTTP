@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { AppSettings } from '../../../../constants';
 
 @Component({
   selector: 'app-edit-user',
@@ -15,7 +16,7 @@ export class EditUserComponent implements OnInit {
   updateForm: FormGroup = new FormGroup({
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(new RegExp('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')),
+      Validators.pattern(new RegExp(AppSettings.PASS_PATTERN)),
     ]),
     age: new FormControl('', Validators.required),
   });
@@ -40,14 +41,7 @@ export class EditUserComponent implements OnInit {
 
     ).subscribe(
       (result) => {
-        console.log('Result: Update User API - ', result);
         this.updateForm.reset();
-      },
-      (error) => {
-        console.log('Error: Update User API - ', error);
-      },
-      () => {
-        console.log('Complete: Update User API');
       }
     );
   }
