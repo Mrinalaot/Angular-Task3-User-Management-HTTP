@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/user.service';
+import { UserService, User } from 'src/app/user.service';
 import { UserFullnamePipe } from '../user-fullname.pipe';
+import { ParamKey } from 'param-key.enum';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { UserFullnamePipe } from '../user-fullname.pipe';
 })
 export class UserComponent implements OnInit {
 
-  @Input() user:any;
+  @Input() user: User;
   @Input() route:string;
   activeRoute: string= "";
 
@@ -33,10 +34,10 @@ export class UserComponent implements OnInit {
   }
 
   handleDetails(user){
-    this.router.navigate(['manage', user.id]);
+    this.router.navigate([ParamKey.MANAGE, user.id]);
   }
 
   handleEdit(id: string){
-    this.router.navigate(['manage/edit/', id]);
+    this.router.navigate([ParamKey.EDIT_USER, id]);
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AppSettings } from '../../constants';
 
-interface User {
+export interface User {
   id: string;
   firstName: string;
   lastName: string;
@@ -27,19 +28,19 @@ export class UserService {
   constructor(private http : HttpClient) { }
 
   getUsers(){
-    return this.http.get<any[]>('http://localhost:8080/users');
+    return this.http.get<User[]>(AppSettings.SERVER_USER_URI);
   }
 
   getUser(id: string) {
-    return this.http.get('http://localhost:8080/users/'+ id);
+    return this.http.get<User>(`${AppSettings.SERVER_USER_URI}/${id}`);
   }
 
   createUser(user: User) {
-    return this.http.post('http://localhost:8080/users', user);
+    return this.http.post(AppSettings.SERVER_USER_URI, user);
   }
 
   updateUser(user: Partial<User>) {
-    return this.http.put('http://localhost:8080/users/' + user.id, {
+    return this.http.put(`${AppSettings.SERVER_USER_URI}/${user.id}`, {
       password: user.password,
       age: user.age,
       isDeleted: user.isDeleted
@@ -47,6 +48,6 @@ export class UserService {
  }
 
   delete(id: string) {
-    return this.http.delete('http://localhost:8080/users/' + id);
+    return this.http.delete(`${AppSettings.SERVER_USER_URI}/${id}`);
   }
 }

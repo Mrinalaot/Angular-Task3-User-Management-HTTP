@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UserService } from 'src/app/user.service';
+import { UserService, User } from 'src/app/user.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { UserStatusPipe } from '../user-status.pipe';
 
@@ -27,7 +27,7 @@ import { UserStatusPipe } from '../user-status.pipe';
 })
 export class UserDetailsComponent implements OnInit {
 
-  user: any;
+  user: User;
   constructor(private route: ActivatedRoute, private usersService: UserService) {
 
 
@@ -36,7 +36,7 @@ export class UserDetailsComponent implements OnInit {
 
     this.route.params.subscribe(
       (param) => {
-        this.user = this.usersService.getUser(param["id"]).subscribe(
+          this.usersService.getUser(param["id"]).subscribe(
           (result) => {
             this.user = result
           },

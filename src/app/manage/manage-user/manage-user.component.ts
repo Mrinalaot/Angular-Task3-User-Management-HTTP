@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
   import { Route, Router } from '@angular/router';
+import { ParamKey } from 'param-key.enum';
 
 @Component({
   selector: 'app-manage-user',
@@ -14,6 +15,6 @@ export class ManageUserComponent implements OnInit {
   }
   showForm()
   {
-    this._route.navigate(["manage/create"]);
+    this._route.navigate([ParamKey.CREATE_USER]);
   }
 }
