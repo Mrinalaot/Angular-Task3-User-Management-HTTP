@@ -40,4 +40,13 @@ export class UserComponent implements OnInit {
   handleEdit(id: string){
     this.router.navigate([ParamKey.EDIT_USER, id]);
   }
+
+  isActive(){
+    return (this.route === 'activate' && !this.user.isDeleted) ?  true: false;
+  }
+
+  isDeleted(){
+   return  (this.route === 'deleted' && this.user.isDeleted) ? true : false;
+  }
+
 }

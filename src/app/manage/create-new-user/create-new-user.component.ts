@@ -9,6 +9,8 @@ import { AppSettings } from '../../../../constants';
   styleUrls: ['./create-new-user.component.css']
 })
 export class CreateNewUserComponent implements OnInit {
+  PASS_FIELD_ALERT : string;
+
   createForm : FormGroup= new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl(''),
@@ -18,7 +20,9 @@ export class CreateNewUserComponent implements OnInit {
        Validators.pattern(AppSettings.PASS_PATTERN)]) ,
     age: new FormControl(''),
   });
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService) {
+    this.PASS_FIELD_ALERT = AppSettings.PASS_FIELD_ALERT;
+  }
 
   ngOnInit() {
   }
