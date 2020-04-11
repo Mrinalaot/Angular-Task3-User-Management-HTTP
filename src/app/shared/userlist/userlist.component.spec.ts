@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserlistComponent } from './userlist.component';
+import { UserComponent } from '../user/user.component';
+import { UserFullnamePipe } from '../user-fullname.pipe';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UserlistComponent', () => {
   let component: UserlistComponent;
@@ -8,7 +11,9 @@ describe('UserlistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserlistComponent ]
+      declarations: [ UserlistComponent, UserComponent, UserFullnamePipe ],
+      imports: [HttpClientTestingModule]
+
     })
     .compileComponents();
   }));

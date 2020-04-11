@@ -23,13 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'second-home-task'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('second-home-task');
+    expect(app.title).toEqual('third-home-work');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('second-home-task app is running!');
-  });
 });
